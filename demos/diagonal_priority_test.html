@@ -1,0 +1,187 @@
+<html>
+
+
+    <style>
+        canvas {
+            image-rendering: pixelated;
+        }
+    </style>
+    
+    <body style = "background-color:#888888">
+
+        <canvas id="myCanvas"></canvas>
+
+    </body>
+
+    <script>
+
+        canvas = document.getElementById("myCanvas");
+
+        // Makes the height and width of your canvas 268/168 pixels
+        canvas.width = 295;
+        canvas.height = 185;
+
+        // Makes the actual height and width 804 x 504 CS pixels, which are twice the size of 
+        // regular pixels. If you want your pixels to be size 1, the width and height would be 134/84
+        // However, in this example I set them to three times the regular pixels, so the pixels are now each 6 by 6
+
+        pixelSize = 6; // How big are the pixels
+
+        canvas.style.width = canvas.width * (pixelSize/2);
+        canvas.style.height = canvas.hieght * (pixelSize/2);
+
+        // Creates a Canvas Rendering Object
+        ctx = canvas.getContext("2d");
+
+
+        
+        rand = function(num){
+            return Math.floor(Math.random() * num);
+            
+        }
+
+        line1 = [[rand(canvas.width),rand(canvas.height)],[rand(canvas.width),rand(canvas.height)]];
+        //line1 = [[109, 153],[159, 163]];
+        
+        line2 = [[rand(canvas.width),rand(canvas.height)],[rand(canvas.width),rand(canvas.height)]];
+        //line2 = [[136, 148],[151, 148]];
+
+
+        write = function(){
+            ctx.beginPath();
+            ctx.fillStyle = "#FFFFFF";
+            ctx.fillRect(0,0,canvas.width,canvas.height);
+            ctx.closePath();
+
+            
+            ctx.beginPath();
+            ctx.strokeStyle = "#00FFFF";
+            ctx.moveTo(line1[0][0],line1[0][1]);
+            ctx.lineTo(line1[1][0],line1[1][1]);
+            ctx.stroke();
+            ctx.closePath();
+
+
+            ctx.beginPath();
+            ctx.strokeStyle = "#FF00FF";
+            ctx.moveTo(line2[0][0],line2[0][1]);
+            ctx.lineTo(line2[1][0],line2[1][1]);
+            ctx.stroke();
+            ctx.closePath();
+
+
+            
+            //setTimeout(write,10);
+        }
+
+        write();
+        
+        
+        
+        /*
+            Fed two lines, this function will return whichever line is higher on the priority array
+        
+        */
+        
+        
+        
+        findMinMax = function(a, b){
+            if(a > b){
+                return {
+                    "min": b,
+                    "max": a
+                }
+            } else {
+                return {
+                    "min": a,
+                    "max": b
+                }
+            }
+        }
+
+
+        findIneq = function(a){
+            var tempM = (a[0][1] - a[1][1])/(a[0][0] - a[1][0]); // you need m to find b
+
+            return {
+                "m": tempM,
+                "b": a[0][1] - (tempM * a[0][0])
+            }
+
+        }
+        
+        getHigher = function(a, b){
+            
+            
+            aMinMax = findMinMax(a[0][0], a[1][0]);
+            bMinMax = findMinMax(b[0][0], b[1][0]);
+            
+            
+            /*if(bMinMax["min"] > aMinMax["max"] || bMinMax["max"] < aMinMax["min"]){
+                return ("a: Lines are not near eachother so it doesn't matter");
+                
+            } else {*/
+            
+            aIneq = findIneq(a);
+
+
+            var retArr = []; //keeps track of which points are behind or ahead 
+
+
+            if(b[0][1] > aIneq["m"] * b[0][0] + aIneq["b"]){
+                retArr.push(b[0]);
+            }
+
+            if(b[1][1] > aIneq["m"] * b[1][0] + aIneq["b"]){
+                retArr.push(b[1]);
+            }
+
+
+
+            if(retArr.length == 2){ // both are below
+                return "b: Magenta";
+            } else if(retArr.length == 1){ // one is above one is below, find out if its the same for the other line
+
+                bIneq = findIneq(b);
+
+                retArr = []; 
+
+
+                if(a[0][1] > bIneq["m"] * a[0][0] + bIneq["b"]){
+                    retArr.push(a[0]);
+                }
+
+                if(a[1][1] > bIneq["m"] * a[1][0] + bIneq["b"]){
+                    retArr.push(a[1]);
+                }
+
+
+                if(retArr.length == 2){ // both are below
+                    return "a: Cyan";
+                } else if(retArr.length == 1){ // one is above one is below, return error
+                    return "ERROR: the lines intersect.";
+                } else if(retArr.length == 0){ // both are above
+                    return "b: Magenta";
+                } else {
+                    return "ERROR: retArr is haywire.";
+                }
+
+
+
+
+            } else if(retArr.length == 0){ // both are above
+                return "a: Cyan";
+            } else {
+                return "ERROR: retArr is haywire.";
+            }
+                
+            //}
+                
+        }
+        
+        
+        console.log(getHigher(line1,line2));
+
+    </script>
+
+</html>

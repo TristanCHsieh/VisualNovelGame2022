@@ -1,0 +1,162 @@
+<html>
+    <head>
+        <meta charset = "utf-8"/>
+        <!-- Apparently this helps the asian characters show up... 
+        So now I can use CJK chars without it showing up like
+        gibberish or squares.
+        -->
+        <style>
+            canvas {
+                image-rendering: pixelated;
+            }
+        </style>
+        
+    </head>
+    <body bgcolor = "#000000">
+        <center><canvas id="myCanvas"></canvas></center>
+        
+        <!--- Setting Up Canvas --->
+        <script src="setup.js"></script>
+        
+        <!--- Classes --->
+        <script src="classes/class_Graphic.js"></script>
+        <script src="classes/class_Dialogue.js"></script>
+        <script src="classes/class_Location.js"></script>
+        <script src="classes/class_Animation.js"></script>
+        <script src="classes/class_Cutscene.js"></script>
+        <script src="classes/class_Object.js"></script>
+        <script src="classes/class_Player.js"></script>
+        <script src="classes/class_Inventory.js"></script>
+        <script src="classes/class_Counter.js"></script>
+        <script src="classes/class_Choicebank.js"></script>
+        
+        <!--- Graphics and Audio --->
+        <script src="graphicandaudio.js"></script>
+        
+        <!--- Controls --->
+        <script src="controls.js"></script>
+        
+        <!--- Hyperparameters --->
+        <script src="hyperparameters.js"></script>
+        
+        
+        <!--- These functions get called every frame --->
+        <script src="functions/write/write.js"></script>
+        <script src="functions/write/writedrawscreen.js"></script>
+        <script src="functions/write/writedrawinventory.js"></script>
+        <script src="functions/write/writecycle.js"></script>
+        <script src="functions/write/writedrawtext.js"></script>
+        <script src="functions/write/writedrawscore.js"></script>
+        
+        <!--- Essential Functions --->
+        <script src="functions/hittest.js"></script>
+        <script src="functions/fadeout.js"></script>
+        <script src="functions/alternate.js"></script>
+        <script src="functions/changelocation.js"></script>
+        <script src="functions/stopaudio.js"></script>
+        <script src="functions/increasescore.js"></script>
+        <script src="functions/obtainitem.js"></script>
+        <script src="functions/enterdoor.js"></script>
+        <script src="functions/say.js"></script>
+        <script src="functions/processwords.js"></script>
+        <script src="functions/pausegame.js"></script>
+        <script src="functions/purge.js"></script>
+        <script src="functions/followplayer.js"></script>
+        <script src="functions/debug.js"></script>
+        <script src="functions/playwaitfunction.js"></script>
+        <script src="functions/diagpriority.js"></script>
+        
+        <!--- Dialogue --->
+        <script src="dialogue.js"></script>
+        
+        <!--- Objects --->
+        <script src="objects/000guide.js"></script>
+        <script src="objects/blackrectangle.js"></script>
+        <script src="objects/players.js"></script>
+        <script src="objects/celestecar.js"></script>
+        <script src="objects/classroomfirstrow.js"></script>
+        <script src="objects/classroomsecondrow.js"></script>
+        <script src="objects/grub.js"></script>
+        <script src="objects/demonspider.js"></script>
+        <script src="objects/bitmaparraylower.js"></script>
+        <script src="objects/bitmaparrayhigher.js"></script>
+        <script src="objects/bitmapgrubbody.js"></script>
+        <script src="objects/smallastronaut.js"></script>
+        <script src="objects/astronaut.js"></script>
+        <script src="objects/violet.js"></script>
+        <script src="objects/kate.js"></script>
+        <script src="objects/katesanxiety.js"></script>
+        <script src="objects/lexi.js"></script>
+        <script src="objects/lexistudy.js"></script>
+        <script src="objects/mrface.js"></script>
+        
+        <!--- Locations --->
+        <script src="locations/000guide.js"></script>
+        <script src="locations/room.js"></script>
+        <script src="locations/ashida.js"></script>
+        <script src="locations/ashida2.js"></script>
+        <script src="locations/ashida3.js"></script>
+        <script src="locations/ashidaclearing.js"></script>
+        <script src="locations/anxietyroom.js"></script>
+        <script src="locations/bedroomtrap.js"></script>
+        <script src="locations/celestebedroom.js"></script>
+        <script src="locations/celestedownstairs.js"></script>
+        <script src="locations/celestehouse.js"></script>
+        <script src="locations/celestekitchen.js"></script>
+        <script src="locations/celesteupstairs.js"></script>
+        <script src="locations/classroom.js"></script>
+        <script src="locations/classroomtrap.js"></script>
+        <script src="locations/closet.js"></script>
+        <script src="locations/donutshop.js"></script>
+        <script src="locations/firstroom.js"></script>
+        <script src="locations/field.js"></script>
+        <script src="locations/forest.js"></script>
+        <script src="locations/fountain.js"></script>
+        <script src="locations/grubhigher.js"></script>
+        <script src="locations/grublower.js"></script>
+        <script src="locations/hallwayi.js"></script>
+        <script src="locations/hallwayii.js"></script>
+        <script src="locations/jamies.js"></script>
+        <script src="locations/jamiesinterior.js"></script>
+        <script src="locations/kateshouse.js"></script>
+        <script src="locations/lexibedroom.js"></script>
+        <script src="locations/lexihallway.js"></script>
+        <script src="locations/leximainroom.js"></script>
+        <script src="locations/lexishouse.js"></script>
+        <script src="locations/office.js"></script>
+        <script src="locations/pumpkinpatch.js"></script>
+        <script src="locations/school.js"></script>
+        <script src="locations/secretroom.js"></script>
+        <script src="locations/sector.js"></script>
+        <script src="locations/violetbathroom.js"></script>
+        <script src="locations/violetbedroom.js"></script>
+        <script src="locations/violetdownstairs.js"></script>
+        <script src="locations/labyrinth.js"></script>
+        <script src="locations/ending.js"></script>
+        
+        <!--- Animations -- might delete later --->
+        <script src="animations/000guide.js"></script>
+        
+        <!--- Cutscenes --->
+        <script src="cutscenes/000guide.js"></script>
+        <script src="cutscenes/00_prologue.js"></script>
+        <script src="cutscenes/00_knockout.js"></script>
+        <script src="cutscenes/05_classroomtrap_eatscene.js"></script>
+        <script src="cutscenes/06_day6dream.js"></script>
+        <script src="cutscenes/11_katesheart.js"></script>
+        <script src="cutscenes/calendar.js"></script>
+        <script src="cutscenes/carchoices.js"></script>
+        <script src="cutscenes/asleep.js"></script>
+        <script src="cutscenes/awake.js"></script>
+        <script src="cutscenes/sunset.js"></script>
+        <script src="cutscenes/title.js"></script>
+        
+        <!--- Inventory --->
+        <script src="inventory/000guide.js"></script>
+        <script src="inventory/inventory.js"></script>
+        
+        <!--- Main -- kickstart the game --->
+        <script src="main.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,308 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2512
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red251\green2\blue7;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c100000\c14913\c0;\cssrgb\c0\c0\c0;}
+\margl1440\margr1440\vieww14820\viewh16460\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf0 **prologue\
+firstroom\
+	
+\f1\b0 PROLOGUE\
+		>> PROLOGUE exit\
+	(firstroom_door)\
+		PROLOGUE\
+		PROLOGUE exit\
+			>> PROLOGUE explore\
+	(firstroom_rightcomputer)\
+	
+\f0\b \
+sector\
+	
+\f1\b0 PROLOGUE explore\
+		(firstroom_door)\
+		(sector_spaceship)\
+	DAY 1 class\
+		(lexthar)\
+	DAY 2 class\
+	DAY 3 class\
+		(lexthar)\
+	DAY 4 night\
+		(lexthar)\
+	DAY 5 night\
+		(grub)\
+	DAY 7 night\
+		(lexthar)\
+	DAY 8 night\
+		(lexthar)\
+	DAY 9 night\
+		(lexthar)\
+	DAY 10 night\
+		(lexthar)\
+	DAY 11 night 2\
+		(lexthar)\
+	ABANDON\
+	ELSE\
+		>> ISOLATION DREAM\
+		(lexthar)
+\f0\b \
+**knockout\
+**awake\
+**calendar\
+	
+\f1\b0 \cf2 time >> day
+\f0\b \cf0 \
+
+\f1\b0 	PROLOGUE explore\
+		>> DAY 1\
+	DAY 1 class\
+		>> DAY 2\
+	DAY 2 class\
+		>> DAY 3\
+	DAY 3 class\
+		>> DAY 4\
+	DAY 4 night\
+		>> DAY 5\
+	DAY 5 night\
+		>> DAY 6\
+	DAY 7 night\
+		>> DAY 8\
+	DAY 8 night\
+		>> DAY 9\
+	DAY 9 night\
+		>> DAY 10\
+	DAY 10 night\
+		>> DAY 11\
+	DAY 11 night 2\
+		>> DAY 12\
+	ISOLATION DREAM\
+		>> ISOLATION\
+	ELSE \
+		>> DAY 1
+\f0\b \
+celesteroom\
+	
+\f1\b0 (celestebedroom_door)\
+	(celestebedroom_bed)\
+		\cf2 time NIGHT\cf0 \
+	DAY 1\
+	DAY 2, DAY 3, DAY 4, DAY 5, DAY 8, DAY 9, DAY 10, DAY 11, DAY 12\
+	DAY 6\
+	DAY 7\
+	\cf3 DAY 10 texts\
+		\cf2 DAY 10 POISON lexi\
+			\cf3 >> DAY 10 night\cf2 \
+		DAY 10 POISON kate\
+			\cf3 >> DAY 10 kate
+\f0\b \cf0 \
+celesteupstairs\
+	
+\f1\b0 (celesteupstairs_rightdoor)
+\f0\b \
+celestedownstairs\
+
+\f1\b0 	(celestedownstairs_door)
+\f0\b \
+celestekitchen\
+celestehouse\
+
+\f1\b0 	(celestehouse_door)\
+	(celestecar)
+\f0\b \
+	
+\f1\b0 DAY 10 kate\
+		>> DAY 10 night
+\f0\b \
+**carchoices\
+school\
+
+\f1\b0 	DAY 11 lexi\
+		\cf2 DAY 11 HELPERS >> lexi/violet/both/none\
+		\cf3 >> DAY 11 violet\
+		>> DAY 11 night\cf0 \
+	DAY 12 lexi\
+		\cf2 >> DAY 12 class
+\f0\b \cf0 \
+hallwayi\
+	
+\f1\b0 DAY 4 violet, \cf2 DAY4CLASS BIRTHDAY not true\
+	\cf3 DAY 5 violet\
+		>> DAY 5 night\
+	DAY 8 mr face\
+		>> DAY 8 office\
+	DAY 9 violet\
+		>> DAY 9 hangout\
+	(hallwayi_classroomdoor)\
+	(hallwayi_closetdoor)\
+	(hallwayi_door)
+\f0\b \cf0 \
+closet\
+	
+\f1\b0 (closetexit)
+\f0\b \
+classroom\
+	
+\f1\b0 DAY 1
+\f0\b \
+	
+\f1\b0 (classroom_door)\
+	(classroom_emptyseat)\
+		DAY 1\
+			>> DAY 1 class\
+		DAY 2\
+			>> DAY 2 class\
+		DAY 3\
+			>> DAY 3 class\
+		DAY 4\
+			>> DAY 4 violet\
+		DAY 5\
+			>> DAY 5 violet\
+		DAY 8\
+			>> DAY 8 mr face\
+		DAY 9\
+			>> DAY 9 violet\
+		DAY 10\
+			>> DAY 10 lexi\
+		DAY 11\
+			>> DAY 11 lexi\
+		DAY 12\
+			\cf2 DAY 11 ASHIDA slave\
+			DAY 11 ASHIDA scare\
+		\cf3 ELSE\
+			\cf0 >> ISOLATION
+\f0\b \
+hallwayii\
+	
+\f1\b0 (hallwayii_officedoor)
+\f0\b \
+office\
+	
+\f1\b0 (officeexit)\
+	DAY 8 OFFICE\
+		>> DAY 8 night\
+	DAY 12 MR. FACE
+\f0\b \
+jamies\
+	
+\f1\b0 (jamies_door)
+\f0\b \
+jamiesinterior\
+	
+\f1\b0 (jamiesinterior_exit)\
+	DAY 4 violet\
+		>> DAY 4 night\
+	DAY 11 night, \cf2 DAY9CLASS KATE yes
+\f0\b \cf0 \
+forest\
+fountain\
+	
+\f1\b0 (fountain_door)
+\f0\b \
+		
+\f1\b0 DAY 9 hangout\
+		DAY 11 violet\
+			\cf2 DAY 11 HELPERS violet\
+			DAY 11 HELPERS both
+\f0\b \cf0 \
+violetdownstairs\
+	
+\f1\b0 (violetdownstairs_exit)\
+	(violetdownstairs_bedroomdoor)
+\f0\b \
+violetbedroom\
+	
+\f1\b0 (violetbedroom_leftdoor)\
+	(violetbedroom_bottomdoor)
+\f0\b \
+violetbathroom\
+	
+\f1\b0 (violetbathroom_door)
+\f0\b \
+lexihouse\
+	
+\f1\b0 (lexishouse_door)\
+	(celestecar)
+\f0\b \
+leximainroom\
+	
+\f1\b0 (leximainroom_door)\
+	DAY 10 lexi\
+		\cf2 DAY 10 POISON >> lexi/kate/none\cf0 \
+		>> DAY 10 texts\
+		>> DAY 10 night
+\f0\b \
+lexihallway\
+	
+\f1\b0 (lexihallway_door)
+\f0\b \
+lexibedroom\
+	
+\f1\b0 (lexibedroom_door)
+\f0\b \
+**asleep\
+	
+\f1\b0 DAY 6 night\
+	DAY 11 night\
+	ELSE
+\f0\b \
+**day6dream\
+grublower\
+grubhigher\
+	
+\f1\b0 (grubhigher_door)
+\f0\b \
+classroomtrap\
+	
+\f1\b0 (classroomtrap_door)\
+	(sleepingviolet)
+\f0\b \
+**classroomtrap_eatscene\
+ashida\
+	
+\f1\b0 DAY 11 night\
+		>> LABYRINTH
+\f0\b \
+labyrinth\
+	
+\f1\b0 (labyrinth_forwarddoor)\
+	(labyrinth_awaydoor)\
+	(labyrinth_leftdoor)\
+	(labyrinth_rightdoor)
+\f0\b \
+donutshop\
+	
+\f1\b0 (donutshop_door)
+\f0\b \
+bedroomtrap\
+
+\f1\b0 	(bedroomtrap_door)
+\f0\b \
+secretroom\
+	
+\f1\b0 (secretroom_forwarddoor)\
+	(secretroom_leftdoor)\
+	(secretroom_rightdoor)
+\f0\b \
+**katesheart\
+
+\f1\b0 \cf2 	ASHIDA >> scare,slave
+\f0\b \cf0 \
+
+\f1\b0 	>> DAY 11 night 2
+\f0\b \
+\
+\
+****** KEY ******\
+\
+**cutscene\
+location\
+	
+\f1\b0 \cf2 variable name >> changed value
+\f0\b \cf0 \
+	
+\f1\b0 EVENT\
+		(event specific object)\
+	(object)\
+		OBJECT EVENT\
+		>> CHANGE TO EVENT\
+}

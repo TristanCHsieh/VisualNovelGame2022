@@ -1,0 +1,234 @@
+<html>
+    <head>
+        <style>
+            canvas {
+                image-rendering: pixelated;
+            }
+        </style>
+        
+    </head>
+    <body style="background-color:#DDDDDD;">
+        <center>
+        <canvas id="myCanvas"></canvas>
+        </center>
+    </body>
+    <script>
+        // Sets a variable equal to your canvas element
+        var canvas = document.getElementById("myCanvas");
+
+
+        // Creates a Canvas Rendering Object
+        ctx = canvas.getContext("2d");
+        
+        loadCounter = 0; // Determines how many images have been loaded
+        
+        class Graphic {
+            constructor(name){
+                this.name = name;
+                this.srcUrl = name + ".png";
+            }
+            loadImg(num){
+                this.newImg = new Image();
+                this.newImg.src = this.srcUrl;
+                this.newImg.onload = function(){ // When the image is loaded, add it to the dictionary.
+                    graphicDic[graphicArr[num].name] = graphicArr[num].newImg; 
+                    // I'm using graphicArr[num] instead of this, because this
+                    // no longer refers to the current object inside the onload function,
+                    // so I have to point to it's location in graphicArr
+                    loadCounter ++;
+                    if(loadCounter == graphicArr.length){ 
+                        // If all the graphics have been loaded, 
+                        // procede to the next part of the functionality.
+                        write();
+                    }
+                }
+            }
+        }
+        
+        // **** NAMES *****
+        // ****************
+        // ****************
+        
+        // an array containing the name of the frames
+        // it is in this format "10altiii" means
+        // it is the third alternative of keyframe 10
+        // in betweens can be denoted however you want but probably a 
+        // roman numeral between the keyframe number and the "alt"
+        
+        // Line only
+        nameArr = [
+            ["0",1],
+            ["1",1],
+            ["2",1],
+            ["3",1],
+            ["4",1],
+            ["5",1]
+        ];
+        
+        graphicArr = []; // Stores all the unloaded Images as graphic objects
+        
+        graphicDic = {}; // Will store all the loaded images as Image objects
+
+        window.onload = function(){ // Waits until the window has loaded
+            for(x = 0; x < nameArr.length; x ++){
+                console.log(x);
+                if(typeof(nameArr[x]) == "string"){
+                    graphicArr.push(new Graphic(nameArr[x]));
+                } else {
+                    for(y = 0; y < nameArr[x][1]; y ++){
+                        graphicArr.push(new Graphic(nameArr[x][0]));
+                    }
+                }
+                
+            }
+            console.log(graphicArr);
+            for(i = 0; i < graphicArr.length; i ++){ // Tells all images to start loading
+                graphicArr[i].loadImg(i); 
+                //The parameter i is the index of the image that's loading, 
+                //which will be useful when working inside the onload function
+            }
+        }
+        
+        window.addEventListener("keyup", doSomething, false);
+        
+        
+        // ******* SPECS *******
+        // *********************
+        // *********************
+        
+        width = 60; // width in pixels
+        height = 100; // height in pixels
+        
+        
+        
+        
+        zoom = .5; // how much are you zooming in .5 is 100%, 1 is 200%
+        bgColor = "#BBBBBB"; // What is the background color of the little barr
+        j = 0; //starting frame
+        frameRate = 60; //frame rate in milliseconds
+        mode = "edit"; // play == play the animation, edit = scroll through the animation
+        showText = false; // is the text showing?
+        loop = true; // does the animation loop?
+        
+        // Audio Specs
+        sound = null;//new Audio("audio.wav"); // What is the audio
+        aStart = 0; // where does the audio start (in frames)
+        
+        
+        aStart = 0 + (aStart * frameRate * .001);
+        
+        
+        
+        barHeight = 30;
+        
+        // Makes the height and width of your canvas 300
+        canvas.width = width;
+        canvas.height = height + barHeight;
+
+        // Makes the actual height and width 900 x 900 CS pixels, which are twice the size of 
+        // regular pixels. If you want your pixels to be size 1, the width and height would both be
+        // 150. However, in this example I set them to 900, to make the canvas bigger and easier to see.
+        // This is why the canvas looks slightly pixelated.
+        pixelSize = 6; // How big are the pixels
+
+        canvas.style.width = canvas.width * (pixelSize/2);
+        canvas.style.height = canvas.height * (pixelSize/2);
+        
+        
+        function write(){
+            ctx.beginPath();
+            ctx.fillStyle = bgColor;
+            ctx.fillRect(0,0,width,height + barHeight);
+            
+            
+            if(mode == "play"){
+                ctx.drawImage(graphicArr[j].newImg,0,0);
+                j ++;
+                if(j == graphicArr.length){
+                    if(loop == true){
+                        j = 0;
+                        if(sound != null){
+                            sound.currentTime = aStart;
+                            sound.play();
+                        }
+                    } else {
+                        j = graphicArr.length - 1;
+                        if(sound != null){    
+                            sound.pause();
+                        }
+                    }
+                }
+
+                setTimeout(write,frameRate);
+            } else if(mode == "edit"){
+                if(sound != null){
+                    sound.currentTime = aStart + (j * frameRate * .001);
+                    sound.play();
+                    setTimeout(function(){sound.pause();},frameRate);
+                }
+                ctx.drawImage(graphicArr[j].newImg,0,0);
+            }
+            
+            if(showText == true){
+                ctx.fillStyle = "#000000";
+                ctx.font = "30px Arial";
+                ctx.fillText(j + 1 + "/" + graphicArr.length + " " + "\"" + graphicArr[j].name + "\"", 0, height + barHeight );
+            }
+            ctx.closePath();
+        }
+        
+        function doSomething(e){
+            
+            switch(e.keyCode){
+                case 37: //left
+                    if(mode == "edit"){
+                        j --;
+                        if(j < 0){
+                            j = graphicArr.length - 1;
+                        }
+                        write();
+                    }
+                    break;
+                case 39: //right
+                    if(mode == "edit"){
+                        j = (j + 1) % graphicArr.length;
+                        write();
+                    }
+                    break;
+                case 32: //space
+                    if(mode == "play"){
+                        if(sound != null){
+                            sound.pause();
+                        }
+                        mode = "edit";
+                        write();
+                    } else if(mode == "edit"){
+                        mode = "play";
+                        if(sound != null){
+                            sound.currentTime = aStart + j*frameRate*.001;
+                            sound.volume = 1;
+                            sound.play();
+                        }
+                        write();
+                    }
+                    break;
+                case 16: // shift reloads page
+                    location.reload();
+                    break;
+                case 84: // t button
+                    if(showText == false){
+                        showText = true;
+                    } else if(showText == true){
+                        showText = false;
+                    }
+                    if(mode == "edit"){
+                        write();
+                    }
+                    break;
+            }
+        }
+        
+        
+    
+    </script>
+</html>
